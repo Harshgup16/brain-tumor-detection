@@ -1,0 +1,286 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section id="try">
+    <h1>Try BrainDx</h1>
+    
+    <div class="upload-container">
+        <div class="upload-area" id="drop-area">
+            <!-- Brain icon SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#0698c4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04Z"></path>
+                <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24A2.5 2.5 0 0 0 14.5 2Z"></path>
+            </svg>
+            
+            <h3>Upload Brain Scan Image</h3>
+            <p>Drag & drop your MRI or CT scan image here or click to browse</p>
+            <p><small>Supported formats: JPG, PNG</small></p>
+            <input type="file" id="file-input" accept="image/*">
+            
+            <div class="file-info" id="file-info"></div>
+        </div>
+        
+        <div class="image-preview" id="image-preview">
+            <div class="preview-container">
+                <img class="preview-img" id="preview-img" src="" alt="Preview">
+                <button class="remove-btn" id="remove-btn">✕</button>
+            </div>
+        </div>
+        
+        <button class="upload-btn" id="upload-btn">Analyze Scan</button>
+        
+        <div class="results-container" id="results-container">
+            <div class="results-title">Analysis Results</div>
+            
+            <div class="result-item">
+                <div class="result-label">
+                    Tumor Detection
+                    <span class="info-tooltip">i
+                        <span class="tooltip-text">Indicates the probability of tumor presence in the scan</span>
+                    </span>
+                </div>
+                <div class="result-value">
+                    <span class="status-indicator" id="status-indicator"></span>
+                    <span id="tumor-probability">--% Probability</span>
+                </div>
+                <div class="probability-bar">
+                    <div class="probability-fill" id="probability-fill" style="width: 0%;"></div>
+                </div>
+            </div>
+            
+            <div class="result-item">
+                <div class="result-label">
+                    Classification
+                    <span class="info-tooltip">i
+                        <span class="tooltip-text">Potential type of tumor identified by the system</span>
+                    </span>
+                </div>
+                <div class="result-value" id="classification">--</div>
+            </div>
+            
+            <div class="result-item">
+                <div class="result-label">
+                    Location
+                    <span class="info-tooltip">i
+                        <span class="tooltip-text">Region of the brain where abnormalities were detected</span>
+                    </span>
+                </div>
+                <div class="result-value" id="location">--</div>
+            </div>
+            
+            <div class="result-item">
+                <div class="result-label">
+                    Recommended Action
+                    <span class="info-tooltip">i
+                        <span class="tooltip-text">Suggested next steps based on the analysis</span>
+                    </span>
+                </div>
+                <div class="result-value" id="recommendation">--</div>
+            </div>
+            
+            <div class="result-item">
+                <div class="result-label">Important Note</div>
+                <div class="result-value">
+                    <strong style="color: #ff9966;">This is an AI-assisted analysis and should not replace professional medical diagnosis. Always consult with qualified healthcare professionals.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="processing-overlay" id="processing-overlay">
+    <div class="loader"></div>
+    <div class="brain-animation">
+        <!-- Brain scanning animation SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <path d="M50 10C28.9 10 12 26.9 12 48c0 18.8 13.6 34.4 31.5 37.6C46.3 75.5 50 75 50 75s3.7.5 6.5 10.6C74.4 82.4 88 66.8 88 48c0-21.1-16.9-38-38-38z" fill="none" stroke="#0698c4" stroke-width="2">
+                <animate attributeName="stroke-dasharray" from="0,300" to="300,0" dur="3s" repeatCount="indefinite" />
+            </path>
+            <path d="M50 20c-15.5 0-28 12.5-28 28 0 13.8 10 25.3 23.1 27.6 1.9-7.2 4.9-7.6 4.9-7.6s3 .4 4.9 7.6C68 73.3 78 61.8 78 48c0-15.5-12.5-28-28-28z" fill="none" stroke="#5cbfed" stroke-width="2">
+                <animate attributeName="stroke-dasharray" from="300,0" to="0,300" dur="3s" repeatCount="indefinite" />
+            </path>
+            <path d="M58 48a8 8 0 1 1-16 0 8 8 0 0 1 16 0z" fill="#0698c4" opacity="0.7">
+                <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2s" repeatCount="indefinite" />
+            </path>
+        </svg>
+    </div>
+    <div class="glow-text">Processing Brain Scan...</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropArea = document.getElementById('drop-area');
+        const fileInput = document.getElementById('file-input');
+        const fileInfo = document.getElementById('file-info');
+        const imagePreview = document.getElementById('image-preview');
+        const previewImg = document.getElementById('preview-img');
+        const removeBtn = document.getElementById('remove-btn');
+        const uploadBtn = document.getElementById('upload-btn');
+        const resultsContainer = document.getElementById('results-container');
+        const processingOverlay = document.getElementById('processing-overlay');
+        
+        // Prevent default drag behaviors
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+            document.body.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        // Highlight drop area when item is dragged over it
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        // Handle dropped files
+        dropArea.addEventListener('drop', handleDrop, false);
+        
+        // Handle clicked upload
+        dropArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', handleFiles, false);
+        removeBtn.addEventListener('click', removeFile, false);
+        uploadBtn.addEventListener('click', analyzeImage, false);
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        function highlight() {
+            dropArea.classList.add('highlight');
+        }
+        
+        function unhighlight() {
+            dropArea.classList.remove('highlight');
+        }
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            
+            handleFiles({ target: { files: files } });
+        }
+        
+        function handleFiles(e) {
+            const files = e.target.files;
+            if (files.length > 0) {
+                const file = files[0];
+                
+                if (file.type.match('image.*')) {
+                    displayFileInfo(file);
+                    displayImagePreview(file);
+                    uploadBtn.style.display = 'block';
+                } else {
+                    alert('Please upload an image file (JPEG, PNG, etc.)');
+                }
+            }
+        }
+        
+        function displayFileInfo(file) {
+            const fileSize = (file.size / (1024 * 1024)).toFixed(2);
+            fileInfo.textContent = `${file.name} (${fileSize} MB)`;
+            fileInfo.style.display = 'block';
+        }
+        
+        function displayImagePreview(file) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                imagePreview.style.display = 'block';
+            }
+            
+            reader.readAsDataURL(file);
+        }
+        
+        function removeFile() {
+            fileInput.value = '';
+            fileInfo.style.display = 'none';
+            imagePreview.style.display = 'none';
+            uploadBtn.style.display = 'none';
+            resultsContainer.style.display = 'none';
+        }
+        
+        function analyzeImage() {
+            // Show processing overlay
+            processingOverlay.classList.add('active');
+            
+            // Get the file
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('Please select a file first');
+                processingOverlay.classList.remove('active');
+                return;
+            }
+            
+            // Create FormData
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            // Send the request to the Flask backend
+            fetch('/api/analyze', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Hide processing overlay
+                processingOverlay.classList.remove('active');
+                
+                // Update results with data from the server
+                updateResults(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred during analysis. Please try again.');
+                processingOverlay.classList.remove('active');
+            });
+        }
+        
+        function updateResults(data) {
+            // Display results container
+            resultsContainer.style.display = 'block';
+            
+            // Smooth scroll to results
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
+            
+            // Update the probability
+            document.getElementById('tumor-probability').textContent = `${data.probability}% Probability`;
+            
+            // Animate the probability bar
+            const probabilityFill = document.getElementById('probability-fill');
+            probabilityFill.style.width = '0%';
+            setTimeout(() => {
+                probabilityFill.style.width = `${data.probability}%`;
+            }, 100);
+            
+            // Update the classification
+            document.getElementById('classification').textContent = data.classification;
+            
+            // Update the location
+            document.getElementById('location').textContent = data.location;
+            
+            // Update the recommendation
+            document.getElementById('recommendation').textContent = data.recommendation;
+            
+            // Update status indicator
+            const statusIndicator = document.getElementById('status-indicator');
+            statusIndicator.classList.remove('status-high', 'status-medium', 'status-low');
+            statusIndicator.classList.add(`status-${data.status}`);
+        }
+    });
+</script>
+{% endblock %}

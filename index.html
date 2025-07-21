@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="style.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dancing+Script:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&family=Lobster&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Passion+One:wght@400;700;900&display=swap" rel="stylesheet">
+   <link rel="shortcut icon" href="./icons8-brain-16.png">
+</head>
+<style>
+section h1{
+    color:#0698c4;
+    font-size:4rem;
+    text-align: center;
+    margin-top:20px;
+}
+section{
+    height:400px;
+    width:100vw;
+}
+
+    @keyframes slideInFromLeft {
+        from {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideInFromRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    .animate-left {
+        animation: slideInFromLeft 1s ease-out forwards;
+    }
+    
+    .animate-right {
+        animation: slideInFromRight 1s ease-out forwards;
+    }
+    
+   
+    .section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .text-content {
+        flex: 1;
+        padding: 20px;
+    }
+    
+    .image-section {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .image-section img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    
+    .section-2 {
+        flex-direction: row-reverse;
+    }
+    
+    .scroll-animate-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 1s ease-out;
+    }
+    
+    .scroll-animate-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 1s ease-out;
+    }
+    
+  
+    .scroll-animate-left.show, 
+    .scroll-animate-right.show {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+   
+    .section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        min-height: 100vh;
+    }
+    
+    .text-content {
+        flex: 1;
+        padding: 20px;
+    }
+    
+    .image-section {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .image-section img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .section-2 {
+        flex-direction: row-reverse;
+    }
+</style>
+
+<body>
+    <div id="preloader"></div>
+
+    <header>
+        <img src="./gif.1.gif" alt="">
+        <h1 class="Topic">BrainDx</h1>
+        <nav id="main-nav">
+            <a href="#hero">Home</a>
+            <a href="#info-section">About Us</a>
+            <a href="http://localhost:8501/">Try Now</a>
+            <a href="#team">Team Members</a>
+            <a href="#Meet">Meet the Community</a>
+        </nav>
+    </header>
+
+
+
+<div class="home" id="hero">
+<video autoplay muted loop>
+    <source src="./video.1.mp4" type="video/mp4">
+    <source src="./video.webm" type="video/webm">
+    Your browser does not support the video tag.
+</video>
+<section id="hero" class="hero">
+   
+        <h2 class="Topic-2">BrainDx</h2>
+        <h3>Where Technology Meets Hope <br> in Brain Cancer Diagnosis</h3>
+      
+        
+
+  <div class="button" id="info-section"  onclick="scrollToInfo()""><button class="glow-on-hover" type="button"> <strong>Know More About Us</strong></button></div>
+    
+</div>
+<div class="container" id="info-section">
+    
+    <div class="section section1">
+        <div class="text-content scroll-animate-left">
+            <span>What is BrainDx?</span>
+            <p>BrainDx is a state-of-the-art system designed for the early detection of brain cancer using advanced machine learning and deep learning algorithms. It aims to assist medical professionals in diagnosing brain tumors quickly and accurately by analyzing brain scans like MRIs and CT scans. By leveraging vast amounts of data, BrainDx helps in identifying abnormalities that might be hard to detect with the human eye.</p>
+        </div>
+        <div class="image-section scroll-animate-right">
+            <img width="420px" height="420px" src="./photo-1.avif" alt="BrainDx image">
+        </div>
+    </div>
+    
+    <div class="section section-2">
+        <div class="image-section scroll-animate-left">
+            <img src="./img 6.jpg" alt="">
+        </div>
+        <div class="text-content scroll-animate-right">
+            <span>How does BrainDx work?</span>
+            <p>BrainDx works by applying deep learning models to medical images (MRI/CT scans). The system processes these images, identifies patterns, and detects potential tumor formations. The trained neural networks are capable of distinguishing between healthy tissue and areas that may indicate the presence of brain cancer. The system provides doctors with a preliminary diagnosis to support their decision-making process.</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="text-content scroll-animate-left">
+            <span>Model Training</span>
+            <p>The BrainDx model undergoes several key steps to ensure accuracy:</p>
+            <ul>
+                <li><strong>Data Collection:</strong> Large datasets of MRI and CT scans are gathered, labeled as healthy or cancerous.</li>
+                <li><strong>Preprocessing:</strong> Images are standardized through resizing, normalization, and augmentation.</li>
+                <li><strong>Deep Learning:</strong> Convolutional Neural Networks (CNNs) analyze spatial features in brain scans.</li>
+                <li><strong>Training:</strong> The model learns from labeled data using supervised learning and optimization techniques.</li>
+                <li><strong>Evaluation:</strong> Performance is tested on a validation set using metrics like accuracy and recall.</li>
+                <li><strong>Optimization:</strong> Adjustments in hyperparameters and architecture improve accuracy.</li>
+                <li><strong>Deployment:</strong> After rigorous testing, the model is integrated into BrainDx for real-time diagnosis.</li>
+            </ul>
+        </div>
+        <div class="image-section scroll-animate-right">
+            <img src="./img_1-removebg-preview.png" alt="">
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="image-section scroll-animate-right">
+            <img src="./img 3.png" alt="">
+        </div>
+        <div class="text-content  scroll-animate-left ">
+            <span>Is it Trustable?</span>
+            <p>BrainDx has undergone rigorous testing and validation to ensure its reliability. While it has been trained using a vast and diverse dataset, it's important to remember that it is an assistive tool and not a substitute for professional medical judgment. The system provides doctors with an additional diagnostic tool, helping them identify potential issues more quickly, but the final diagnosis should always come from a qualified healthcare professional.</p>
+        </div>
+    </div>
+</div>
+
+<!-- 
+<section id="try">
+    <h1>Try BrainDx</h1>
+</section> -->
+
+
+<section class="team-members" id="team"  >
+    
+    <div class="wave-container"  >
+        <h1 class="wave-text">
+            <span>Meet</span>  <span>Our</span>   <span>Team</span>   <span>Members</span>
+        </h1>
+    </div>
+    
+    
+        <div class="team-container" >
+            <!-- Team Member 1 -->
+            <div class="team-card">
+                <img src="https://i.pinimg.com/736x/25/4d/c0/254dc0d4a735cad6809d19f14f895634.jpg" alt="Team Member 1">
+                <h3>KOMAL SINGH</h3>
+                <p class="role">23BAI10561</p>
+                <p>"I trained a model to predict my mood. It said I’m always 'confused'."</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/komal-singh-6532042a6/">
+                   <div class="hover-container">
+                    <h1 class="explosive-text">Know More About Me</h1>
+                </div>
+            
+        </a>
+
+                </div>
+            </div>
+
+            
+            <!-- Team Member 2 -->
+            <div class="team-card">
+                <img src="./Shahrukh Khan.jpg" alt="Team Member 3">
+                <h3>HARSH GUPTA</h3>
+                <p class="role">23BAI10392</p>
+                <p>"Bade bade hackathons mein chhoti chhoti segmentation faults hoti rehti hain, senorita!"</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/harshgup16">
+                    <div class="hover-container">
+                        <h1 class="explosive-text">Know More About Me</h1>
+                    </div>
+                
+            </a>
+                </div>
+            
+            </div>
+
+
+              <!-- Team Member 3 -->
+            <div class="team-card">
+                <img src="https://i.pinimg.com/736x/f3/3d/e5/f33de5f6d8580f06f5c4a36126c0c56a.jpg" alt="Team Member 2">
+                <h3>AKSHARA SRIVASTAVA</h3>
+                <p class="role">23BAI10585</p>
+                <p>"Ab mai itna bhi kuch khaas nahi."</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/akshara-srivastava-3572052a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+                
+                    <div class="hover-container">
+                        <h1 class="explosive-text">Know More About Me</h1>
+                    </div>
+                   
+                </a>
+                </div>
+            </div>
+
+            
+    
+
+</section>
+<h2 class="Community" id="Meet">What Our Patients Say</h2>
+    
+<div class="review-section">
+    <!-- Review 1 -->
+    <div class="review-box">
+        <div class="review-header">
+            <img src="https://randomuser.me/api/portraits/women/45.jpg" class="reviewer-img">
+            <div>
+                <div class="reviewer-name">Sarah Johnson</div>
+                <div class="reviewer-title">Brain Cancer Survivor</div>
+            </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="review-text">
+            "The early detection saved my life. The AI system caught abnormalities that two radiologists initially missed. I'm forever grateful for this technology that gave me a second chance."
+        </div>
+    </div>
+    
+  
+    <div class="review-box">
+        <div class="review-header">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="reviewer-img">
+            <div>
+                <div class="reviewer-name">Michael Chen</div>
+                <div class="reviewer-title">Patient's Family Member</div>
+            </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="review-text">
+            "The accuracy and speed of diagnosis was incredible. Within hours of the scan, we had a detailed analysis and treatment options. This service gave us hope when we needed it most."
+        </div>
+    </div>
+    
+   
+    <div class="review-box">
+        <div class="review-header">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="reviewer-img">
+            <div>
+                <div class="reviewer-name">Dr. Emily Rodriguez</div>
+                <div class="reviewer-title">Neurologist</div>
+            </div>
+        </div>
+        <div class="stars">★★★★☆</div>
+        <div class="review-text">
+            "As a medical professional, I'm impressed by the system's precision. It's become an invaluable second opinion tool in our practice, though human oversight remains crucial."
+        </div>
+    </div>
+</div>                      
+
+
+<script>
+    var loader = document.getElementById("preloader");
+    window.addEventListener("load", function() {
+        loader.style.display = "none";
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll(".section");
+
+    function revealSections() {
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const triggerPoint = window.innerHeight - 100; // Adjust trigger point if needed
+
+            if (sectionTop < triggerPoint) {
+                section.classList.add("show");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", revealSections);
+    revealSections(); 
+});
+
+function scrollToInfo() {
+        document.getElementById("info-section").scrollIntoView({ behavior: 'smooth' });
+    }
+
+    
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const animatedElements = document.querySelectorAll('.scroll-animate-left, .scroll-animate-right');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, {
+            threshold: 0.1 
+        });
+        
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+    });
+ 
+    
+    </script>
+
+
+
+</body>
+</html>

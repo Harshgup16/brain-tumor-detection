@@ -1,0 +1,3 @@
+0 - brain_glioma             ------Brain Cancer
+1 - brain_menin
+2 - brain_tumor

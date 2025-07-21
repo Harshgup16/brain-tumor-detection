@@ -1,0 +1,619 @@
+body {
+    margin: 0;
+    height: 100vh;
+    /* background: url("https://www.example.com/your-image.jpg") no-repeat center center fixed;
+    background-size: cover; */
+}
+
+
+#preloader {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    background: #000 url("Man_Machine Animation.gif") no-repeat center center;
+    background-size: 200px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.box {
+    height: 69px;
+    width: 80px;
+    background-color: green;
+    border: 2px solid blue;
+}
+
+img{
+    width:100px;
+    height:80px;
+}
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f3f3f3;
+            color: #000;
+        }
+
+        /* Header */
+        header {
+    background-color: #000000;
+    color: white;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures it stays on top of other elements */
+}
+
+
+
+      
+       
+
+        nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.4s ease-in-out;
+    position: relative;
+    display: inline-block;
+    padding: 10px 10px;
+   
+   
+    
+}
+
+nav{
+    margin-left:auto;
+    display:flex;
+   justify-items: end;
+}
+
+
+nav a:hover {
+    color: #5cbfed; /* Change color on hover */
+    transform: scale(1.1); /* Slightly enlarge */
+}
+
+/* Glowing Underline Effect */
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #5cbfed, #d9d6d6);
+    transition: width 0.4s ease-in-out, left 0.4s ease-in-out;
+}
+
+nav a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Floating Effect on Hover */
+nav a:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 3px 4px 15px #5cbfed;
+}
+.home {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Makes the video cover the entire screen */
+    z-index: -1; /* Sends the video behind the content */
+}
+
+body {
+    position: relative;
+    z-index: 1; /* Keeps text on top of the video */
+    background-color:black;
+}
+
+h2{
+    color:white;
+    font-size:100px;
+    margin-top:200px;
+    padding-left:20px;
+}
+h3{
+    color:#5cbfed;
+    font-size:50px;
+    margin-top: 20px;
+    padding-left:20px;
+    
+
+  font-family: "Passion One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+}
+.glow-on-hover {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    overflow: hidden; /* To prevent the glow effect from overflowing */
+    box-shadow: 0 0 5px #5cbfed, 0 0 10px #5cbfed, 0 0 15px #5cbfed; /* Optional: Add shadow to button for a glowing look */
+    transition: transform 0.3s ease; /* Add smooth transition for size change */
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #5cbfed, #0698c4, #6c82ed, #c9afe6);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 9px);
+    height: calc(100% + 9px);
+    animation: glowing 20s linear infinite;
+    opacity: 1; /* Always show the glow */
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+/* Hover effect: Increase size */
+.glow-on-hover:hover {
+    transform: scale(1.1); /* Increase the size by 10% */
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+.button {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+strong {
+    font-size: 17px;
+}
+html {
+    scroll-behavior: smooth;
+}
+span{
+    color:#0698c4;
+    font-size:50px;
+
+}
+
+.container{
+    background-color:black;
+}
+
+.one {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.one .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.one p {
+    width: 60%; /* Adjust this width as needed */
+    margin-right: 20px; /* Adds space between text and image */
+}
+
+.one img {
+    width: 30%; /* Adjust the image width as needed */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: cover; /* Ensures the image covers the space without distortion */
+}
+
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border:2px solid black;
+    margin: 20px;
+    padding:20px;
+    background-color:black;
+    color:white;
+    font-size:1.5rem;
+    
+}
+
+.image-section {
+    flex-shrink: 0;
+    
+}
+
+.image-section img {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    height:400px;
+    width:500px;
+}
+
+.text-content {
+    margin-top:30px;
+}
+
+.text-content span {
+    display: block; /* Makes span behave like a block to apply margin */
+    margin-bottom: 30px; /* Adds space between span and p */
+}
+
+
+.text-content li {
+    text-decoration:none;
+    padding:8px;
+}
+
+
+
+ul {
+    list-style: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+}
+
+ul li {
+    margin-bottom: 8px; /* Adds spacing between items */
+    margin-top:6px;
+}
+
+ul li strong{
+    color:#0698c4;
+    font-size:1.6rem;
+}
+
+.section {
+    opacity: 0;
+    transform: translateY(50px); /* Moves the section down initially */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    box-shadow: 0 0 10px #0698c4, 0 0 20px #0698c4, 0 0 30px #0698c4;
+}
+
+/* When section is visible, animate it */
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.social-icons{
+    display: flex;
+    justify-content: space-evenly;
+}
+.social-icons svg{
+    height: 20px;
+    width: 20px;
+}
+.team-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.team-section h2 {
+    font-size: 1rem;
+    color: #0698c4;
+    margin-bottom: 20px;
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    flex-wrap: wrap;
+}
+
+.team-card {
+    background-color: #090606;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    max-width: 250px;
+    transition: transform 0.3s;
+    box-shadow: 0 0 10px #0698c4, 0 0 20px #0698c4, 0 0 30px #0698c4;
+    margin:10px;
+    margin-top:90px;
+}
+
+
+.team-card:hover {
+    transform: translateY(-10px);
+}
+
+.team-card img {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+margin-bottom: 10px;
+object-fit: cover;
+display: block; 
+margin-left: auto; 
+margin-right: auto; 
+}
+
+
+.team-card h3 {
+    font-size: 1.2rem;
+    color: #0698c4;
+    margin-bottom: 5px;
+    padding-right:20px;
+}
+
+.team-card p {
+    font-size: 0.9rem;
+    color:white;
+    margin-bottom: 10px;
+}
+
+.team-card .role {
+    font-weight: bold;
+    color: #0698c4;
+    margin-bottom: 10px;
+}
+
+.team-card .social-icons a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    margin: 0 5px;
+}
+
+.team-card .social-icons a:hover {
+    color: #0698c4;
+}
+
+.team-members h2{
+    text-align:center;
+    color:#0698c4;
+    font-size:170px;
+    
+}
+
+
+.section1{
+    padding-top:-80px;
+}
+.wave-text span {
+    display: inline-block;
+    font-size: 4rem;
+    animation: wave 2s ease-in-out infinite;
+}
+
+.wave-text span:nth-child(1) {
+    animation-delay: 0s;
+}
+.wave-text span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.wave-text span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+.wave-text span:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+.hover-container {
+    display: inline-block;
+    position: relative;
+}
+
+.explosive-text {
+    font-size: 13px;
+    color: #fff;
+    letter-spacing: 0.1em;
+    display: inline-block;
+    position: relative;
+    transition: transform 0.3s ease-out;
+}
+
+.explosive-text:hover {
+    transform: scale(1.1);
+}
+
+.explosive-text:hover::before,
+.explosive-text:hover::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 160%;
+    border-radius: 5%;
+    transform: translate(-5%, -5%) scale(0);
+    animation: burst 0.8s ease-out forwards;
+    -webkit-animation: burst 0.8s ease-out forwards;
+    -webkit-transform: translate(-5%, -5%) scale(0);
+    -moz-transform: translate(-5%, -5%) scale(0);
+    -ms-transform: translate(-5%, -5%) scale(0);
+    -o-transform: translate(-5%, -5%) scale(0);
+    -webkit-border-radius: 5%;
+    -moz-border-radius: 5%;
+    -ms-border-radius: 5%;
+    -o-border-radius: 5%;
+}
+
+.explosive-text:hover::before {
+    background: radial-gradient(circle, rgba(0, 200, 255, 0.6), transparent);
+    z-index: -1;
+}
+
+.explosive-text:hover::after {
+    background: radial-gradient(circle,#fff , transparent);
+    z-index: -2;
+}
+
+@keyframes burst {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.hover-container{
+    box-shadow:0 0 1px #0698c4, 0 0 2px #0698c4, 0 0 3px #0698c4;;
+}
+.hover-container h1{
+    padding-bottom:20px;
+    padding-inline: 6px;
+}
+
+
+
+
+.review-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.review-box {
+    background-color: #111;
+    border-radius: 10px;
+    padding: 25px;
+    width: 280px;
+    margin: 15px;
+    box-shadow:0 0 10px #0698c4, 0 0 20px #0698c4, 0 0 30px #0698c4;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.review-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 10px #0698c4, 0 0 20px #0698c4, 0 0 30px #0698c4;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.reviewer-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid #0698c4;
+}
+
+.reviewer-name {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.reviewer-title {
+    color: #0698c4;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.review-text {
+    color: #ccc;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.stars {
+    color: #ffcc00;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.Community {
+    color: #fff;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px #0698c4;
+}
+.Community{
+    font-size:4.2rem;
+    margin-top:300px;
+}
+
+.Topic-2 {
+    color: white;
+    font-size: 4.8rem;
+    text-align: left;
+    margin-left: 20px;
+    padding-left: 0;
+    width: 100%;
+    margin-bottom: 10px; /* Adjust spacing between h2 and h3 as needed */
+}
+
